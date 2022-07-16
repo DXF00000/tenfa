@@ -361,9 +361,7 @@ let jiage = () => {
   axios({
     url: "/api/tfcar/car/price",
   }).then((res) => {
-    // console.log(res.data.data);
     jg.value = res.data.data;
-    // console.log(jg.value);
   });
 };
 let pl = ref([]);
