@@ -1,0 +1,382 @@
+.elul {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.buy-body {
+    width: 100%;
+    height: auto;
+}
+
+.buy-div {
+    width: 1200px;
+    margin: 0 auto;
+    height: auto;
+}
+
+.buy-search {
+    width: 880px;
+    height: 40px;
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #f0f0f0;
+    box-sizing: border-box;
+    margin: 38px 0 20px 0;
+    padding-left: 20px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#buy-search-input {
+    height: 100%;
+    width: 750px;
+    line-height: 20px;
+}
+
+input {
+    border: none;
+    outline: none;
+
+}
+
+#buy-search-btn {
+    width: 96px;
+    height: 40px;
+    background: #5685fe;
+    box-sizing: border-box;
+    border-radius: 0px 8px 8px 0px;
+    border: 1px solid #f0f0f0;
+    color: #ffffff;
+}
+
+.buy-sift {
+    width: 1200px;
+    min-height: 290px;
+    box-sizing: border-box;
+    padding: 30px 20px 30px 20px;
+    background: #ffffff;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.buy-sift-div {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sift-div-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #333333;
+}
+
+
+.sift-div-list>p {
+    margin-left: 20px;
+    padding: 0 10px;
+    line-height: 20px;
+    height: 20px;
+}
+
+.sift-div-checked {
+    color: #ffffff;
+    background-color: #5685fe;
+    /* border-radius: 4px; */
+}
+
+.sift-series-list {
+    display: flex;
+}
+
+.buy-sift-div-mt {
+    margin-top: 30px;
+}
+
+.series-list-div {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1030px;
+}
+
+.series-list-div>p {
+    margin-left: 20px;
+    margin-bottom: 30px;
+    padding: 0 10px;
+    line-height: 20px;
+    height: 20px;
+}
+
+.select-list>div p:hover {
+    background-color: #5685fe;
+    color: #ffffff;
+}
+
+.sift-price-div {
+    width: 322px;
+    height: 44px;
+    background: #ffffff;
+    box-sizing: border-box;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2px;
+    font-size: 14px;
+}
+
+.sift-price-in {
+    display: flex;
+    align-items: center;
+}
+
+.sift-price-in input {
+    width: 90px;
+    height: 40px;
+    background: #ffffff;
+    border-radius: 4px;
+    border: 1px solid #f0f0f0;
+    box-sizing: border-box;
+    padding-left: 14px;
+}
+
+.sift-price-in span {
+    margin: 0 6px;
+}
+
+.price-in-btn {
+    width: 68px;
+    height: 40px;
+    background: #f5f7fe;
+    border-radius: 4px;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+}
+
+
+.tfcar-select {
+    width: 116px;
+    height: 40px;
+    background: #ffffff;
+    border-radius: 4px;
+    border: 1px solid #f0f0f0;
+    box-sizing: border-box;
+    padding: 0 13px;
+    position: relative;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+.sift-div-list .tfcar-select {
+    margin-left: 20px;
+}
+
+.tfcar-select {
+    width: 116px;
+    height: 40px;
+    background: #ffffff;
+    border-radius: 4px;
+    border: 1px solid #f0f0f0;
+    box-sizing: border-box;
+    padding: 0 13px;
+    position: relative;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.tfcar-select span {
+    line-height: 40px;
+}
+
+.tfcar-select i {
+    float: right;
+    background-image: url("https://www.tf2sc.cn/static/img/icon.png");
+    background-position: -6px -5px;
+    background-repeat: no-repeat;
+    width: 14px;
+    height: 7px;
+    display: block;
+    margin-top: 17px;
+}
+
+.select-list div>p {
+    width: 100%;
+    height: 34px;
+    padding-left: 14px;
+    line-height: 34px;
+    display: inline-block;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    font-size: 12px;
+}
+
+.select-list>p:hover {
+    background-color: #5685fe;
+    color: #ffffff;
+    display: block;
+}
+
+.tfcar-select:hover i {
+    background-position: -28px -5px;
+}
+
+.tfcar-select:hover {
+    border-color: #5685fe;
+    border-radius: 4px 4px 0px 0px;
+}
+
+.tfcar-select:hover .select-list {
+    box-shadow: 0px 2px 20px 0px rgb(170 170 216 / 40%);
+    border: 1px solid #5685fe;
+    display: block;
+}
+
+.select-list {
+    display: none;
+    position: absolute;
+    top: 39px;
+    left: -1px;
+    z-index: 1;
+    min-width: 116px;
+    max-height: 218px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border: 1px solid transparent;
+}
+
+
+.sift-num {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.sift-now-div {
+    display: flex;
+    align-items: center;
+}
+
+.sift-now {
+    width: auto;
+    padding: 0 10px;
+    background-color: #ffffff;
+    height: 34px;
+
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.sift-now-text {
+    color: #5685fe;
+    margin-right: 10px;
+}
+
+.sift-now p {
+    width: 14px;
+    height: 14px;
+    background-image: url("https://www.tf2sc.cn/static/img/guanbi.png");
+    background-size: 14px 14px;
+    border: 1px solid transparent;
+}
+
+.sift-reset i {
+    width: 14px;
+    height: 14px;
+    background-image: url("https://www.tf2sc.cn/static/img/shanchu.png");
+    background-size: 14px 14px;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+.sift-reset {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #666666;
+    margin-left: 20px;
+    margin-right: 30px;
+}
+
+.sift-list {
+    width: 100%;
+    height: auto;
+    padding-bottom: 82px;
+}
+
+.sift-car-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.car-top-left {
+    margin-top: 11px;
+}
+
+.car-top-left p {
+    font-size: 18px;
+    line-height: 32px;
+    font-weight: 600;
+    padding-bottom: 6px;
+    margin-right: 30px;
+    display: inline-block;
+}
+
+.car-top-right {
+    width: 307px;
+    height: 40px;
+    background: #ffffff;
+    border-radius: 4px;
+    border: 1px solid #f0f0f0;
+    margin-bottom: 13px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.car-top-right p {
+    display: block;
+    width: 76px;
+    height: 40px;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.car-top-right span {
+    display: inline-block;
+    width: 1px;
+    height: 20px;
+    background: #f0f0f0;
+}
+
+.sift-car-body {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 30px;
+}
+
+.top-left-checked {
+    color: #5685fe;
+    border-bottom: 4px solid #5685fe;
+    border-radius: 2px;
+}
+
+.top-right-checked {
+    color: #5685fe;
+}

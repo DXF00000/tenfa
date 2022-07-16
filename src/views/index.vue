@@ -12,8 +12,11 @@
               class="search-input"
               placeholder="搜索品牌、车型"
               id="search-in"
+              v-model="ssk"
             />
-            <button class="search-btn" id="search-btn">搜索</button>
+            <button class="search-btn" id="search-btn" @click="shuru">
+              搜索
+            </button>
           </div>
           <div class="buy-sell">
             <div class="buy">
@@ -21,7 +24,11 @@
                 <div class="search-line"></div>
                 <div class="title-text">我要买车</div>
               </div>
-              <maiche></maiche>
+              <maiche
+                @dianji="dianji"
+                @dianji1="dianji1"
+                @dianji2="dianji2"
+              ></maiche>
             </div>
             <div class="sell">
               <div class="buy-title">
@@ -67,7 +74,7 @@
         <biaoti :res="res"></biaoti>
         <div class="list">
           <template v-for="item in data" :key="item">
-            <liebiao :item="item"></liebiao>
+            <liebiao :item="item" @tiaoz="tiaoz"></liebiao>
           </template>
         </div>
         <xinche :res="xin"></xinche>
@@ -96,6 +103,7 @@ import { useStore } from "vuex";
 let res = ref("二手车");
 let xin = ref("新车");
 let zixun = ref("新闻资讯");
+let ssk = ref("");
 let data = ref([]);
 let data2 = ref([]);
 let get = () => {
@@ -112,6 +120,58 @@ let gait = () => {
   }).then((res) => {
     data2.value.push(res.data.data[0]);
     data2.value.push(res.data.data[1]);
+  });
+};
+// 路由跳转
+
+let storer = useRouter();
+let tiaoz = (id) => {
+  storer.push({
+    path: "/detail",
+    query: {
+      num: id,
+    },
+  });
+};
+
+let canshu = ref([]);
+// // 品牌跳转
+// 类型跳转
+let dianji = (carBrand) => {
+  storer.push({
+    path: "/usedcar",
+    query: {
+      carBrand,
+    },
+  });
+};
+let dianji1 = (carModel) => {
+  storer.push({
+    path: "/usedcar",
+    query: {
+      carModel,
+    },
+  });
+};
+let dianji2 = (currentPriceLt) => {
+  console.log(currentPriceLt);
+  storer.push({
+    path: "/usedcar",
+    query: {
+      currentPriceLt,
+    },
+  });
+};
+
+// 价格跳转
+
+// 搜索跳转
+let shuru = () => {
+  storer.push({
+    path: "/usedcar",
+    query: {
+      text: ssk.value,
+    },
   });
 };
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="list-item">
+    <div class="list-item" @click="tiaoz(item.ind)">
       <div class="list-item-img">
         <img :src="item.cover" width="270" height="208" />
         <div class="item-type type-re" :style="{ background: typeCss }">
@@ -21,6 +21,13 @@
 <script setup>
 import { computed, ref } from "vue";
 let props = defineProps(["item"]);
+let emit = defineEmits(["tiaoz"]);
+
+// 自定义事件
+let tiaoz = (id) => {
+  emit("tiaoz", id);
+};
+
 // 计算属性
 let data = computed(() => {
   let data = new Date(props.item.dateOfRegistration);

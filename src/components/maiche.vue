@@ -2,18 +2,36 @@
   <div>
     <div class="buy-search">
       <div class="search-div">
-        <div v-for="item in dic" :key="item" class="div-brand">
+        <div
+          v-for="item in dic"
+          :key="item"
+          class="div-brand"
+          @click="pingpai(JSON.parse(item.queryRules).carBrand)"
+        >
+          <!--  -->
           <img :src="item.logo" alt="" />
           <span>{{ item.label }}</span>
         </div>
       </div>
       <div class="search-div">
-        <span class="div-price" v-for="item in dec" :key="item">
+        <!--  -->
+        <span
+          class="div-price"
+          v-for="item in dec"
+          :key="item"
+          @click="leixin(JSON.parse(item.queryRules).carModel)"
+        >
           {{ item.label }}
         </span>
       </div>
+
       <div class="search-div">
-        <span class="div-price" v-for="item in dsc" :key="item">
+        <span
+          class="div-price"
+          v-for="item in dsc"
+          :key="item"
+          @click="jia(JSON.parse(item.queryRules).currentPriceLt)"
+        >
           {{ item.label }}
         </span>
       </div>
@@ -26,6 +44,8 @@ import axios from "axios";
 import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
+let emit = defineEmits(["dianji", "dianji1", "dianji2"]);
+
 let dic = ref([]);
 let dec = ref([]);
 let dsc = ref([]);
@@ -37,12 +57,27 @@ let get = () => {
     dic.value = res.data.data.convenientBrands;
     dec.value = res.data.data.convenientModels;
     dsc.value = res.data.data.convenientPrices;
+    console.log(dec.value);
+    console.log();
   });
 };
 
-onMounted(() => {
-  get();
-});
+// 自定义事件
+
+let pingpai = (carBrand) => {
+  console.log(carBrand);
+  emit("dianji", carBrand);
+};
+let leixin = (carModel) => {
+  console.log(carModel);
+  emit("dianji1", carModel);
+};
+let jia = (currentPriceLt) => {
+  console.log(currentPriceLt);
+  emit("dianji2", currentPriceLt);
+};
+
+get();
 </script>
 
 <style scoped  lang="scss">

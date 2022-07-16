@@ -5,6 +5,7 @@ const Newcar = () => import("../views/xinche.vue")
 const Usedfinance = () => import("../views/jinrong.vue")
 const Usedservice = () => import("../views/fuwu.vue")
 const Sellcar = () => import("../views/maiche.vue")
+const Detail = () => import("../views/xiangqing.vue")
 
 
 const routes = [
@@ -30,6 +31,9 @@ const routes = [
   }, {
     path: "/usedfinance",
     component: Usedfinance
+  }, {
+    path: "/detail",
+    component: Detail
   }
 ]
 
