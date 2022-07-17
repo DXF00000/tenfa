@@ -6,7 +6,7 @@
           v-for="item in dic"
           :key="item"
           class="div-brand"
-          @click="pingpai(JSON.parse(item.queryRules).carBrand)"
+          @click="pingpai(JSON.parse(item.queryRules).carBrand, item.label)"
         >
           <!--  -->
           <img :src="item.logo" alt="" />
@@ -19,7 +19,7 @@
           class="div-price"
           v-for="item in dec"
           :key="item"
-          @click="leixin(JSON.parse(item.queryRules).carModel)"
+          @click="leixin(JSON.parse(item.queryRules).carModel, item.label)"
         >
           {{ item.label }}
         </span>
@@ -30,7 +30,7 @@
           class="div-price"
           v-for="item in dsc"
           :key="item"
-          @click="jia(JSON.parse(item.queryRules).currentPriceLt)"
+          @click="jia(JSON.parse(item.queryRules).currentPriceLt, item.label)"
         >
           {{ item.label }}
         </span>
@@ -64,17 +64,17 @@ let get = () => {
 
 // 自定义事件
 
-let pingpai = (carBrand) => {
+let pingpai = (carBrand, text) => {
   console.log(carBrand);
-  emit("dianji", carBrand);
+  emit("dianji", carBrand, text);
 };
-let leixin = (carModel) => {
+let leixin = (carModel, text) => {
   console.log(carModel);
-  emit("dianji1", carModel);
+  emit("dianji1", carModel, text);
 };
-let jia = (currentPriceLt) => {
+let jia = (currentPriceLt, text) => {
   console.log(currentPriceLt);
-  emit("dianji2", currentPriceLt);
+  emit("dianji2", currentPriceLt, text);
 };
 
 get();

@@ -47,6 +47,10 @@ switch (props.item.saleType) {
     typeText.value = "腾发自营";
     typeCss.value = "linear-gradient(90deg, #FF8856 0%, #FF4725 100%)";
     break;
+  case 3:
+    typeText.value = "严选车源";
+    typeCss.value = "linear-gradient(90deg, #FF8856 0%, #FF4725 100%)";
+    break;
   case 1:
     typeText.value = "腾发自营";
     typeCss.value = "linear-gradient(90deg, #FF8856 0%, #FF4725 100%)";
