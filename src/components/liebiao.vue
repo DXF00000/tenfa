@@ -40,16 +40,18 @@ let typeCss = ref("");
 let typeText = ref("");
 switch (props.item.saleType) {
   case 2:
-    typeText.value = "限时特惠";
-    typeCss.value = "linear-gradient(90deg, #ff1766 0%, #ff2a23 100%)";
+    typeText.value = "车主直售";
+    typeCss.value = "linear-gradient(90deg, #5F98F6 0%, #2E68EB 100%)";
     break;
   case 0:
-    typeText.value = "腾发自营";
-    typeCss.value = "linear-gradient(90deg, #FF8856 0%, #FF4725 100%)";
+    typeText.value = "严选车源";
+    typeCss.value =
+      "background: linear-gradient(90deg, #4DD4D4 0%, #0CBFCD 100%)";
     break;
   case 3:
-    typeText.value = "严选车源";
-    typeCss.value = "linear-gradient(90deg, #FF8856 0%, #FF4725 100%)";
+    typeText.value = "限时特惠";
+    typeCss.value =
+      "background: linear-gradient(90deg, #FF1766 0%, #FF2A23 100%)";
     break;
   case 1:
     typeText.value = "腾发自营";

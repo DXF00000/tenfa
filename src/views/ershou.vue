@@ -29,7 +29,17 @@
           <div class="sift-series-list buy-sift-div-mt">
             <div>车系：</div>
             <div class="series-list-div">
-              <p class="siftDivChecked">不限</p>
+              <!-- class="siftDivChecked" -->
+              <template v-for="(item, i) in aodi" :key="i">
+                <p
+                  @click="pqd3(item.id, i, item.series)"
+                  :class="{ siftDivChecked: item.series == num3 }"
+                  v-show="aaa"
+                >
+                  {{ item.series }}
+                </p>
+              </template>
+
               <!-- <p>宝马X4M</p> -->
             </div>
           </div>
@@ -201,11 +211,12 @@
         <div class="sift-list">
           <div class="sift-car-top">
             <div class="car-top-left">
-              <p class="top-left-checked">全部</p>
-              <p>腾发自营</p>
-              <p>车主直售</p>
-              <p>限时秒杀</p>
-              <p>严选车源</p>
+              <!-- <p >全部</p> -->
+              <template v-for="(item, i) in yanxc" :key="i">
+                <p @click="qdj(i)" :class="{ topleftchecked: i - 1 == nums }">
+                  {{ item }}
+                </p>
+              </template>
             </div>
             <div class="car-top-right">
               <p class="top-right-checked">默认排序</p>
@@ -259,6 +270,7 @@ const handleCurrentChange = (val) => {
     get(val);
   }
 };
+let yanxc = ref(["全部", "严选车源", "腾发自营", "车主直售", "限时秒杀"]);
 // 路由跳转详情
 let storer = useRouter();
 let tiaoz = (id) => {
@@ -321,10 +333,12 @@ let del = (i) => {
 };
 // 列表请求默认请求
 let data = ref([]);
+
 let currentPage = ref(1);
-let get = (i) => {
+
+let get = (i, s = "") => {
   axios({
-    url: `/api/tfcar/car/list?page=${i}`,
+    url: `/api/tfcar/car/list?page=${i}&saleType=${s}`,
   }).then((res) => {
     data.value = res.data.data.content;
   });
@@ -400,6 +414,24 @@ if (Object.keys(route.query).length) {
 } else {
   get(1);
 }
+// https://api.tf2sc.cn/api/tfcar/car/series300?brandId=7
+// 获取车型
+let aodi = ref([]);
+let hqcxx = (id) => {
+  axios({
+    url: "/api/tfcar/car/series300",
+    params: {
+      brandId: id,
+    },
+  }).then((res) => {
+    if (res.data.status == 200) {
+      aodi.value = res.data.data.content;
+      aodi.value.unshift({
+        series: "不限",
+      });
+    }
+  });
+};
 
 // 点击事件
 //  guanjianzi.value.splice(0, 1);
@@ -408,22 +440,17 @@ let cxi = ref([]);
 let num = ref("不限");
 let num1 = ref("不限");
 let num2 = ref("不限");
+let num3 = ref("不限");
+let aaa = ref(true);
 let a = ref([true]);
+
 let pqd = (id, i, item) => {
   num.value = item;
-  if (a.value) {
-    guanjianzi.value = [];
-    guanjianzi.value.unshift({
-      name: "品牌",
-      index: guanjianzi.value.length - 1,
-    });
-    p1.value.unshift({
-      name: item,
-      index: guanjianzi.value.length - 1,
-    });
-    a.value = false;
+  hqcxx(id);
+  if (item == "不限") {
+    aaa.value = false;
   } else {
-    guanjianzi.value.splice(0, 1);
+    aaa.value = true;
   }
 };
 let pqd1 = (id, i, item) => {
@@ -432,7 +459,19 @@ let pqd1 = (id, i, item) => {
 let pqd2 = (id, i, item) => {
   num2.value = item;
 };
-
+let pqd3 = (id, i, item) => {
+  num3.value = item;
+};
+let nums = ref(-1);
+// 点击下面 4 个标题
+let qdj = (i) => {
+  nums.value = i - 1;
+  if (nums.value == -1) {
+    get(1);
+  } else {
+    get(1, nums.value);
+  }
+};
 //
 //
 //
@@ -478,7 +517,6 @@ let pingpai = () => {
   axios({
     url: "/api/tfcar/car/customSeries",
   }).then((res) => {
-    // console.log(res.data.data[0].brands);
     pq.value = res.data.data[0].brands;
     pq.value.unshift({
       brand: "不限",
@@ -496,7 +534,6 @@ let chexing = () => {
     cx.value.unshift({
       abbreviation: "不限",
     });
-    console.log(cx.value);
   });
 };
 let jg = ref([]);
@@ -656,6 +693,7 @@ input {
 
 .buy-sift-div-mt {
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .series-list-div {
@@ -928,7 +966,7 @@ button {
   padding-top: 30px;
 }
 
-.top-left-checked {
+.topleftchecked {
   color: #5685fe;
   border-bottom: 4px solid #5685fe;
   border-radius: 2px;
