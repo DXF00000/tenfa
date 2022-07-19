@@ -65,7 +65,7 @@
               <p
                 v-for="(item, i) in jg"
                 :key="item"
-                @click="pqd2(item.id, i, item.label)"
+                @click="pqd2(id, i, item.label)"
                 :class="{ siftDivChecked: item.label == num2 }"
               >
                 {{ item.label }}
@@ -211,7 +211,6 @@
         <div class="sift-list">
           <div class="sift-car-top">
             <div class="car-top-left">
-              <!-- <p >全部</p> -->
               <template v-for="(item, i) in yanxc" :key="i">
                 <p @click="qdj(i)" :class="{ topleftchecked: i - 1 == nums }">
                   {{ item }}
@@ -366,35 +365,41 @@ let qqtz = (i) => {
     data.value = res.data.data.content;
   });
 };
+// 品牌代名词
+let zz = ref(route.query.carBrand);
 // 品牌 列表渲染
 let qingpai = (i) => {
   axios({
     url: `/api/tfcar/car/list?page=${i}&sort=
 `,
     params: {
-      carBrand: route.query.carBrand,
+      carBrand: zz.value,
     },
   }).then((res) => {
     data.value = res.data.data.content;
   });
 };
+// 车型代名词
+let zz1 = ref(route.query.currentPriceLt);
 let cexin1 = (i) => {
   axios({
     url: `/api/tfcar/car/list?page=${i}&sort=
 `,
     params: {
-      currentPriceLt: route.query.currentPriceLt,
+      currentPriceLt: zz1.value,
     },
   }).then((res) => {
     data.value = res.data.data.content;
   });
 };
+// 价格代名词
+let zz2 = ref(route.query.carModel);
 let jiage1 = (i) => {
   axios({
     url: `/api/tfcar/car/list?page=${i}&sort=
 `,
     params: {
-      carModel: route.query.carModel,
+      carModel: zz2.value,
     },
   }).then((res) => {
     data.value = res.data.data.content;
@@ -446,7 +451,10 @@ let a = ref([true]);
 
 let pqd = (id, i, item) => {
   num.value = item;
+  zz.value = id;
   hqcxx(id);
+  qingpai(1);
+
   if (item == "不限") {
     aaa.value = false;
   } else {
@@ -455,6 +463,8 @@ let pqd = (id, i, item) => {
 };
 let pqd1 = (id, i, item) => {
   num1.value = item;
+  zz1.value = id;
+  cexin1(1);
 };
 let pqd2 = (id, i, item) => {
   num2.value = item;
@@ -531,6 +541,7 @@ let chexing = () => {
     url: "/api/tfcar/car/model",
   }).then((res) => {
     cx.value = res.data.data.content;
+
     cx.value.unshift({
       abbreviation: "不限",
     });
@@ -543,6 +554,8 @@ let jiage = () => {
     url: "/api/tfcar/car/price",
   }).then((res) => {
     jg.value = res.data.data;
+    console.log(res.data.data);
+
     jg.value.unshift({
       label: "不限",
     });
